@@ -14,10 +14,49 @@
 
 @implementation ViewController
 
+{
+    
+    IBOutlet UILabel *label1;
+    
+    IBOutlet UILabel *label2;
+    
+    IBOutlet UILabel *label3;
+    
+
+    IBOutlet UILabel *resultLabel;
+    
+    
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
 }
+
+
+- (IBAction)start:(id)sender {
+    
+    //0から9までの数字をランダムで出して箱に入れていく
+    int label1_box = arc4random() % 10;
+    
+    int label2_box = arc4random() % 10;
+    
+    int label3_box = arc4random() % 10;
+    
+    label1.text = [NSString stringWithFormat:@"%d",label1_box];
+    label2.text = [NSString stringWithFormat:@"%d",label2_box];
+    label3.text = [NSString stringWithFormat:@"%d",label3_box];
+    
+    if (label1_box == label2_box && label2_box == label3_box) {
+        resultLabel.text = @"大当たり!!!";
+    }else{
+        
+        resultLabel.text = @"はずれ！！！";
+    }
+    
+}
+
 
 
 - (void)didReceiveMemoryWarning {
